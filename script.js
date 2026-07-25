@@ -99,6 +99,7 @@ const uploadDocument = document.querySelector("#upload-document"),
 
 uploadDocument.addEventListener("change", (e) => {
   const file = e.target.files[0];
+  if (!file) return; // user cancelled the file picker
   if (
     file.type === "application/pdf" ||
     file.type === "text/plain" ||
