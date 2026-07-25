@@ -1,3 +1,4 @@
+// OCR submission handler for the standalone page.
 function submission(event) {
     event.preventDefault();
 
@@ -8,7 +9,8 @@ function submission(event) {
     $.ajax({
         method: 'POST',
         url: 'https://api.api-ninjas.com/v1/imagetotext',
-        headers: {'X-Api-Key': 'y+xrzFL0in3iD2tF1plouA==hy4OSpG7B0IlSQUo'},
+        // API key is loaded from config.js (not committed to the repo)
+        headers: {'X-Api-Key': API_NINJAS_KEY},
         data: formData,
         enctype: 'multipart/form-data',
         processData: false,
@@ -27,7 +29,8 @@ function submission(event) {
 let downloadBtn = document.querySelector("#download-btn");
 
 downloadBtn.addEventListener("click", (e) => {
-  let outputText = textTextElem.value;
+  // fix: was `textTextElem` (undefined) — use the output textarea element
+  let outputText = document.querySelector("#output-text").value;
   let outputLanguage =
     outputLanguageDropdown.querySelector(".selected").dataset.value;
   if (outputText) {

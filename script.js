@@ -145,6 +145,7 @@ const inputChars = document.querySelector("#input-chars");
 inputTextElem.addEventListener("input", (e) => {
   inputChars.innerHTML = inputTextElem.value.length;
 });
+// OCR: send the uploaded image to API Ninjas image-to-text and show the result.
 function submission(event) {
   event.preventDefault();
 
@@ -155,7 +156,8 @@ function submission(event) {
   $.ajax({
       method: 'POST',
       url: 'https://api.api-ninjas.com/v1/imagetotext',
-      headers: {'X-Api-Key': 'y+xrzFL0in3iD2tF1plouA==hy4OSpG7B0IlSQUo'},
+      // API key is loaded from config.js (not committed to the repo)
+      headers: {'X-Api-Key': API_NINJAS_KEY},
       data: formData,
       enctype: 'multipart/form-data',
       processData: false,
