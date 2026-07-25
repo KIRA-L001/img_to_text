@@ -1,0 +1,14 @@
+# Secrets / local config
+config.js
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Dependencies (if ever added)
+node_modules/
