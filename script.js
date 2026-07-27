@@ -69,6 +69,11 @@ swapBtn.addEventListener("click", (e) => {
 
 function translate() {
   const inputText = inputTextElem.value;
+  // Skip the network request when there is nothing to translate.
+  if (!inputText.trim()) {
+    outputTextElem.value = "";
+    return;
+  }
   const inputLanguage =
     inputLanguageDropdown.querySelector(".selected").dataset.value;
   const outputLanguage =
