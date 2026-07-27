@@ -73,17 +73,16 @@ function translate() {
     inputLanguageDropdown.querySelector(".selected").dataset.value;
   const outputLanguage =
     outputLanguageDropdown.querySelector(".selected").dataset.value;
-  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${inputLanguage}&tl=${outputLanguage}&dt=t&q=${encodeURI(
+  const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${inputLanguage}&tl=${outputLanguage}&dt=t&q=${encodeURIComponent(
     inputText
   )}`;
   fetch(url)
     .then((response) => response.json())
     .then((json) => {
-      console.log(json);
       outputTextElem.value = json[0].map((item) => item[0]).join("");
     })
     .catch((error) => {
-      console.log(error);
+      console.error("Translation request failed:", error);
     });
 }
 inputTextElem.addEventListener("input", (e) => {
