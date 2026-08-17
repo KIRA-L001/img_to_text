@@ -17,3 +17,13 @@ def average_confidence(items):
     if not items:
         return 0.0
     return sum(float(it.get("conf", 0)) for it in items) / len(items)
+
+
+def join_words(items, separator=" "):
+    """Join OCR word items into a single string using each item's `text`."""
+    return separator.join(str(it.get("text", "")) for it in items)
+
+
+def clamp_confidence(value, low=0.0, high=100.0):
+    """Clamp an OCR confidence score into the [low, high] range."""
+    return max(low, min(high, float(value)))
